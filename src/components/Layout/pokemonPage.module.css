@@ -1,0 +1,20 @@
+.main {
+    background-color: white;
+    min-height: 100vh;
+    font-size: calc(10px + 2vmin);
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+}
+.item{
+    background-color: lightgreen;
+    height: 10%;
+    margin: 0.2%;
+}
+.item:hover{
+    transition: 1s;
+    transform: scale(1.2);
+}

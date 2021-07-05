@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import css from './Header.module.css'
-import HeaderButton from "./UI/HeaderButton";
+import HeaderButton from "../UI/HeaderButton";
 const Header = () => {
     return (
         <Fragment>
@@ -8,7 +8,7 @@ const Header = () => {
                 <h1>Get your team together</h1>
                 <HeaderButton/>
             </header>
-            <div className>
+            <div>
 
             </div>
         </Fragment>
