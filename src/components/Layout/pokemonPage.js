@@ -1,16 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import css from './pokemonPage.module.css'
 import axios from "axios";
 
 const PokemonPage= () => {
-console.log('loaded')
     const [appState, setAppState] =useState([])
     const [urls, setUrls] = useState([])
-    let obj = []
+    const obj = []
 
     useEffect(()=>{
-        console.log('first use')
-        axios.get('https://pokeapi.co/api/v2/pokemon?limit=4&offset=100')
+        axios.get('https://pokeapi.co/api/v2/pokemon?limit=2')
             .then(res =>{
                  res.data.results.forEach(el=>{
                     obj.push(el.url)
@@ -19,26 +17,21 @@ console.log('loaded')
             })
     },[])
 
+    const fetchData=()=>{
+       let obj=[]
+       urls.forEach(async (el)=>{
+           const res = await axios.get(el)
+            obj.push(res.data.sprites.other.dream_world.front_default)
+        })
+        return obj
+    }
+     useEffect(()=>{
+         const arr = fetchData()
+         console.log(arr)
+         setAppState(arr)
+     },[urls])
 
 
-const fetchData=()=>{
-    let u=[]
-    let pic =  urls.map(async (el,index)=>{
-       const res = await axios.get(el)
-        u.push(res.data.sprites.other.dream_world.front_default)
-        return res.data.sprites.other.dream_world.front_default
-    })
-    console.log(u)
-    return u
-
-}
-    useEffect(()=>{
-        console.log('in useeee')
-        let picArr = fetchData()
-      console.log(picArr.length)
-        setAppState(picArr)
-    },[urls])
-console.log(appState)
     return (
         <div className={css.main}>
             <div className={css.item}>
@@ -49,9 +42,8 @@ console.log(appState)
             </div>
 
             {appState.map((el,index)=> {
-                return <div className={css.item} key={index}>
-                    <img src={`${el}`} alt={'here is pokemon'}/>
-                </div>
+                return <p key={index}>{el}</p>
+
             })}
 
 
@@ -59,5 +51,26 @@ console.log(appState)
 
     );
 }
+// <div className={css.item} key={index}>
+//     <img src={`${el}`} alt={'here is pokemon'}/>
+// </div>
 
 export default PokemonPage;
+// const fetchPokemonData= useCallback(pokemon=>{
+//     axios.get(pokemon.url).then(res=>{console.log(res.data.sprites.other.dream_world.front_default);obj.push(res.data.sprites.other.dream_world.front_default)})
+// })
+//
+//
+//
+// useEffect(()=>{
+//     axios.get('https://pokeapi.co/api/v2/pokemon?limit=2')
+//         .then(res => (res.data.results))
+//         .then(allPokemons=>{
+//
+//             allPokemons.forEach(pokemon=>{
+//                 fetchPokemonData(pokemon);
+//             })
+//         })
+//     console.log(obj)
+//     setAppState(obj)
+// },[])
