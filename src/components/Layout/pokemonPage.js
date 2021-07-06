@@ -1,50 +1,31 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import css from './pokemonPage.module.css'
 import axios from "axios";
+import PokemonCard from "../pokemon-card/PokemonCard";
 
-const PokemonPage= () => {
-    const [appState, setAppState] =useState([])
-    const [urls, setUrls] = useState([])
-    const obj = []
+const PokemonPage = () => {
+    const [appState, setAppState] = useState(null)
+    const [urls, setUrls] = useState(null)
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get('https://pokeapi.co/api/v2/pokemon?limit=2')
-            .then(res =>{
-                 res.data.results.forEach(el=>{
-                    obj.push(el.url)
-                })
-                setUrls(obj)
+            .then(res => {
+                setUrls(res.data.results)
             })
-    },[])
-
-    const fetchData=()=>{
-       let obj=[]
-       urls.forEach(async (el)=>{
-           const res = await axios.get(el)
-            obj.push(res.data.sprites.other.dream_world.front_default)
-        })
-        return obj
-    }
-     useEffect(()=>{
-         const arr = fetchData()
-         console.log(arr)
-         setAppState(arr)
-     },[urls])
+    }, [])
 
 
     return (
         <div className={css.main}>
-            <div className={css.item}>
-                <p>what a hell</p>
-            </div>
-            <div className={css.item}>
-                <p> fhldkvgdfv</p>
-            </div>
 
-            {appState.map((el,index)=> {
-                return <p key={index}>{el}</p>
-
-            })}
+            {
+                urls && urls.map(e => (
+                    <PokemonCard
+                        key={e.url}
+                        url={e.url}
+                        name={e.name}/>
+                ))
+            }
 
 
         </div>

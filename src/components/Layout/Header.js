@@ -3,7 +3,7 @@ import css from './Header.module.css'
 import HeaderButton from "../UI/HeaderButton";
 const Header = () => {
     return (
-        <Fragment>
+        <>
             <header className={css.header}>
                 <h1>Get your team together</h1>
                 <HeaderButton/>
@@ -11,7 +11,7 @@ const Header = () => {
             <div>
 
             </div>
-        </Fragment>
+        </>
     );
 };
 
