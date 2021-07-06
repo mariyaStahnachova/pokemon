@@ -26,7 +26,7 @@
 }
 
 .badge {
-    background-color: #b94517;
+    background-color: rgba(69, 141, 187, 1);
     padding: 0.25rem 1rem;
     border-radius: 25px;
     margin-left: 1rem;

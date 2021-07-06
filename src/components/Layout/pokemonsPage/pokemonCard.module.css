@@ -1,0 +1,19 @@
+.item{
+    background-color: rgba(243, 243, 229, 1);
+    height: 150px;
+    width: 180px;
+    margin: 0.2%;
+background-repeat: no-repeat;
+}
+.item:hover{
+    transition: 1s;
+    transform: scale(1.2);
+}
+.p{
+ font-size: 10px;
+}
+img{
+    height: 150px;
+    width: 170px;
+}
+

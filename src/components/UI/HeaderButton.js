@@ -8,7 +8,6 @@ const HeaderButton = () => {
     const btnClasses = `${css.button} ${isButtonOn ? css.bump : ''}`
     return (
         <button className={btnClasses} >
-            <span className={css.icon}></span>
             <span>Your team</span>
             <span className={css.badge}>0</span>
 

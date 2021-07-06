@@ -1,0 +1,12 @@
+.main {
+    background-color: white;
+    min-height: 100vh;
+    font-size: calc(10px + 2vmin);
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+}
