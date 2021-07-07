@@ -1,0 +1,43 @@
+.main{
+    display: flex;
+    flex-direction: row;
+
+
+}
+.inner{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid green;
+    justify-content: space-evenly;
+}
+h1{
+    color:royalblue;
+}
+.innerRow{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+.actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid brown;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+}
+.text{
+    font-size: 1.2rem;
+    color:cornflowerblue;
+    font-weight: bold;
+}
+.disc{
+    background-color: khaki;
+    border-radius: 2px;
+    height: 20px;
+    width: 40px;
+
+}

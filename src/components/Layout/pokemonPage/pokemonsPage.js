@@ -1,9 +1,9 @@
 import React, { useEffect, useState} from 'react';
 import css from './pokemonsPage.module.css'
 import axios from "axios";
-import PokemonCard from "./pokemonsPage/PokemonCard";
+import PokemonCard from "../pokemonCard/PokemonCard";
 
-import InfoPokemonModal from "../infoPokemonModal/infoPokemonModal";
+import InfoPokemonModal from "../../infoPokemonModal/infoPokemonModal";
 
 const PokemonsPage = () => {
     const [urls, setUrls] = useState(null)

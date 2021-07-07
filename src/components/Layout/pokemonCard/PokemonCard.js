@@ -11,6 +11,7 @@ const PokemonCard = (props) => {
     useEffect(() => {
         axios.get(props.url)
             .then(res => {
+                console.log(res.data)
                 setProfile(res.data)
             })
     }, [])
@@ -26,10 +27,9 @@ const PokemonCard = (props) => {
     return (
         <>
         {isModalOpen && <InfoPokemonModal
+            key={props.name}
             onClick={closeInfoModal}
-            name={props.name}
-
-
+            prop={profile}
         />}
         <div className={css.item} onClick={openInfoModal}>
            <img src={profile && profile.sprites.other.dream_world.front_default} alt=""/>
