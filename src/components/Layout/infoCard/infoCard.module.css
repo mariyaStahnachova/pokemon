@@ -1,13 +1,11 @@
 .main{
     display: flex;
     flex-direction: row;
-
-
 }
+
 .inner{
     display: flex;
     flex-direction: row;
-    border: 1px solid green;
     justify-content: space-evenly;
 }
 h1{
@@ -16,17 +14,17 @@ h1{
 .innerRow{
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    justify-content: flex-start;
 }
 .actions{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    border: 1px solid brown;
+
 }
 .row{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-right: 20px;
 }
 .text{
@@ -37,7 +35,8 @@ h1{
 .disc{
     background-color: khaki;
     border-radius: 2px;
-    height: 20px;
-    width: 40px;
-
+    margin: 5%;
+}
+.column{
+    margin-left: 30%;
 }

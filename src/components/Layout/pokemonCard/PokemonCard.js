@@ -11,12 +11,11 @@ const PokemonCard = (props) => {
     useEffect(() => {
         axios.get(props.url)
             .then(res => {
-                console.log(res.data)
                 setProfile(res.data)
             })
     }, [])
 
-    console.log(profile)
+
     const closeInfoModal=()=>{
         setModalState(false)
     }

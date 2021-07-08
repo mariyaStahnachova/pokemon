@@ -1,0 +1,13 @@
+.row {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+/*.board{*/
+/*    width: 50%;*/
+/*    border: 1px solid black;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    flex-wrap: wrap;*/
+/*}*/

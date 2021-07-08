@@ -4,10 +4,14 @@ import CartContext from "../../store/cartContext";
 
 const InfoCard = (props) => {
     const ctx= useContext(CartContext)
-
-    console.log(props)
     const addHandler = ()=>{
         ctx.add(props)
+    }
+    const likeHandler=()=>{
+        ctx.like(props)
+    }
+    const removeHandler=()=>{
+        ctx.remove(props.name)
     }
 
     return (
@@ -17,27 +21,33 @@ const InfoCard = (props) => {
         <img src={props.src} alt=''/>
         <div className={css.innerRow}>
             <div className={css.inner}>
-                <div>
+                <div className={css.column}>
                     <p className={css.text}>Abilities</p>
-                    <div className={css.row}>
-                        {props.abiltties.map(el=>{
-                            return <div className={css.disc}>{el.ability.name}</div>
-                        })}
-                    </div>
+                    {/*<div className={css.row}>*/}
+                    {/*    {props.abiltties.map(el=>{*/}
+                    {/*        console.log(el.ability.name)*/}
+                    {/*        // return <div className={css.disc} >{el.ability.name}</div>*/}
+                    {/*    })}*/}
+                    {/*    {props.abiltties.map(el=>{*/}
+                    {/*        return <div className={css.disc} >{el.ability.name}</div>*/}
+                    {/*    })}*/}
+                    {/*</div>*/}
 
                 </div>
-                <div>
+                <div className={css.column}>
                     <p className={css.text}>Types</p>
                     <div className={css.row}>
                         {props.types.map(el=>{
-                            return <div className={css.disc}>{el.type.name}</div>
+                            return <div className={css.disc} >{el.type.name}</div>
                         })}
                     </div>
 
                 </div>
             </div>
             <div className={css.actions}>
-                <button onClick={addHandler}>Add to team</button>
+                {props.card && <button onClick={addHandler}>Add to team</button>}
+                {props.card && <button onClick={likeHandler}>Like</button>}
+                {!props.card && <button onClick={removeHandler}>Remove</button>}
             </div>
 
         </div>

@@ -11,7 +11,7 @@
     border-radius: 25px;
     font-weight: bold;
     font-size:1.2rem;
-    margin-right: 20%;
+    margin-left: -100%;
 }
 
 .button:hover,
