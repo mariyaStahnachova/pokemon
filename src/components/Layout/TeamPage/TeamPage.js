@@ -2,16 +2,20 @@ import React, {useContext} from 'react';
 import InfoCard from "../infoCard/infoCard";
 import CartContext from "../../store/cartContext";
 import css from './TeamPage.module.css'
+import {useSelector} from "react-redux";
 
 const TeamPage = () => {
-    const ctx = useContext(CartContext)
+    const items = useSelector(store=> store.items)
+    const liked = useSelector(store=> store.liked)
+console.log(items)
+console.log(liked)
     return (
      <div className={css.row}>
          <div>
             <p>Your team</p>
              <div className={css.board}>
-            {ctx.items.length !== 0 &&
-                ctx.items.map(el=>
+            {items.length !== 0 &&
+                items.map(el=>
                     <InfoCard
                         card={false}
                         key={el.src}
@@ -28,8 +32,8 @@ const TeamPage = () => {
          <div>
              <p>Like</p>
              <div className={css.board}>
-             {ctx.liked.length !== 0 &&
-                 ctx.liked.map(el=>
+             {liked.length !== 0 &&
+                 liked.map(el=>
                      <InfoCard
                          card={false}
                          key={el.src}

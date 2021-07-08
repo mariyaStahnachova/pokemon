@@ -13,13 +13,11 @@ function App() {
     return (
 
         <div className="App">
-            <CartProvider>
             <Header/>
             <Switch>
             <Route exact={true} path='/' component={PokemonsPage} />
             <Route exact={true} path='/team' component={TeamPage} />
             </Switch>
-            </CartProvider>
         </div>
 
     );

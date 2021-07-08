@@ -1,17 +1,19 @@
 import React, {useContext} from 'react';
 import css from './infoCard.module.css'
 import CartContext from "../../store/cartContext";
+import {useDispatch} from "react-redux";
 
 const InfoCard = (props) => {
-    const ctx= useContext(CartContext)
+    const dispatch = useDispatch()
+
     const addHandler = ()=>{
-        ctx.add(props)
+        dispatch({type:'ADD', item:props})
     }
     const likeHandler=()=>{
-        ctx.like(props)
+        dispatch({type:'LIKE',item:props})
     }
     const removeHandler=()=>{
-        ctx.remove(props.name)
+        dispatch({type:'REMOVE',name:props.name})
     }
 
     return (
@@ -37,8 +39,8 @@ const InfoCard = (props) => {
                 <div className={css.column}>
                     <p className={css.text}>Types</p>
                     <div className={css.row}>
-                        {props.types.map(el=>{
-                            return <div className={css.disc} >{el.type.name}</div>
+                        {props.types.map((el,index)=>{
+                            return <div key={index} className={css.disc} >{el.type.name}</div>
                         })}
                     </div>
 
