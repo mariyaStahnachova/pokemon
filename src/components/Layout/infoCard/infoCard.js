@@ -1,19 +1,21 @@
-import React, {useContext} from 'react';
+import React, {useState} from 'react';
 import css from './infoCard.module.css'
-import CartContext from "../../store/cartContext";
 import {useDispatch} from "react-redux";
+import {add,like, remove} from "../../storeRedux/mainReducer";
+import Button from "../../UI/Button/Button";
 
 const InfoCard = (props) => {
     const dispatch = useDispatch()
 
+
     const addHandler = ()=>{
-        dispatch({type:'ADD', item:props})
+        dispatch(add(props))
     }
     const likeHandler=()=>{
-        dispatch({type:'LIKE',item:props})
+        dispatch(like(props))
     }
     const removeHandler=()=>{
-        dispatch({type:'REMOVE',name:props.name})
+        dispatch(remove(props.name))
     }
 
     return (
@@ -25,21 +27,17 @@ const InfoCard = (props) => {
             <div className={css.inner}>
                 <div className={css.column}>
                     <p className={css.text}>Abilities</p>
-                    {/*<div className={css.row}>*/}
-                    {/*    {props.abiltties.map(el=>{*/}
-                    {/*        console.log(el.ability.name)*/}
-                    {/*        // return <div className={css.disc} >{el.ability.name}</div>*/}
-                    {/*    })}*/}
-                    {/*    {props.abiltties.map(el=>{*/}
-                    {/*        return <div className={css.disc} >{el.ability.name}</div>*/}
-                    {/*    })}*/}
-                    {/*</div>*/}
+                    <div className={css.row}>
+                        { props.card && props.abiltties.map((el,index)=>{
+                         return <div key={index} className={css.disc} >{el.ability.name}</div>
+                        })}
+                    </div>
 
                 </div>
                 <div className={css.column}>
                     <p className={css.text}>Types</p>
                     <div className={css.row}>
-                        {props.types.map((el,index)=>{
+                        { props.types.map((el,index)=>{
                             return <div key={index} className={css.disc} >{el.type.name}</div>
                         })}
                     </div>
@@ -47,9 +45,9 @@ const InfoCard = (props) => {
                 </div>
             </div>
             <div className={css.actions}>
-                {props.card && <button onClick={addHandler}>Add to team</button>}
-                {props.card && <button onClick={likeHandler}>Like</button>}
-                {!props.card && <button onClick={removeHandler}>Remove</button>}
+                {props.card && <Button onClick={addHandler}>Add to card</Button>}
+                {props.card && <Button onClick={likeHandler}>Like</Button>}
+                {!props.card && <Button onClick={removeHandler}>Remove</Button>}
             </div>
 
         </div>

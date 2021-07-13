@@ -1,11 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React from 'react';
 import css from './HeaderButton.module.css'
-import CartContext from "../../store/cartContext";
 import {useSelector} from "react-redux";
 
 
 const HeaderButton = () => {
-    const badge = useSelector(store=>store.amount)
+    const badge = useSelector(store=>store.app.amount)
     return (
         <button className={css.button} >
             <span>Your team</span>

@@ -1,14 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import InfoCard from "../infoCard/infoCard";
-import CartContext from "../../store/cartContext";
 import css from './TeamPage.module.css'
 import {useSelector} from "react-redux";
 
 const TeamPage = () => {
-    const items = useSelector(store=> store.items)
-    const liked = useSelector(store=> store.liked)
-console.log(items)
-console.log(liked)
+    const items = useSelector(store=> store.app.items)
+    const liked = useSelector(store=> store.app.liked)
+
     return (
      <div className={css.row}>
          <div>
@@ -21,7 +19,7 @@ console.log(liked)
                         key={el.src}
                         name={el.name}
                         src={el.src}
-                        abiltties={el.abilities}
+                        abiltties={el.abiltties}
                         types={el.types}>
                     </InfoCard>
                 )

@@ -6,10 +6,14 @@ import PokemonsPage from "./components/Layout/pokemonPage/pokemonsPage";
 import CartContext from './components/store/cartContext';
 import CartProvider from "./components/cartProvider/cartProvider";
 import TeamPage from "./components/Layout/TeamPage/TeamPage";
+import {useSelector} from "react-redux";
+import {useTypedSelector} from "./hooks/typedUseSelector";
 
 
 
-function App() {
+const App:React.FC =()=> {
+    const state = useTypedSelector(state=>state.app.items)
+    console.log(state)
     return (
 
         <div className="App">

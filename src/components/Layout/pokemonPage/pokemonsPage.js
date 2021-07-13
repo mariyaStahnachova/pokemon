@@ -3,11 +3,9 @@ import css from './pokemonsPage.module.css'
 import axios from "axios";
 import PokemonCard from "../pokemonCard/PokemonCard";
 
-import InfoPokemonModal from "../../infoPokemonModal/infoPokemonModal";
 
 const PokemonsPage = () => {
     const [urls, setUrls] = useState(null)
-
 
     useEffect(() => {
         axios.get('https://pokeapi.co/api/v2/pokemon?limit=100')
